@@ -4,8 +4,7 @@ namespace FirstObjects_2024;
 /// <summary>
 /// represents a standard deck of playing cards
 /// </summary>
-public class Deck:IEnumerable<Card>
-{
+public class Deck:IEnumerable<Card> {
     private List<Card> _cards;
 
     private Random rnd = new Random();
@@ -31,9 +30,7 @@ public class Deck:IEnumerable<Card>
     }
     
     //shuffling a deck
-    /* method:
-     split the deck in half, then take one deck and insert it randomly into the other; repeat 3 times
-     */
+    ///method: split the deck in half, then take one deck and insert it randomly into the other; repeat 3 times
     
     private (List<Card>, List<Card>) Split(List<Card> cards) {
         var pile1 = new List<Card>();
@@ -60,6 +57,11 @@ public class Deck:IEnumerable<Card>
     {
         for (int i =0; i<3; i++)
         {
+            (var pile1, var pile2) = Split(_cards);
+            InsertCardsRandomly(pile1);
+            InsertCardsRandomly(pile2);
+            // what do I do here
+            // _cards = pile1 pile2;
             
         }
     }
@@ -85,6 +87,21 @@ public class Deck:IEnumerable<Card>
         _cards.RemoveAt(0);
         return card;
 
+    }
+
+    /// <summary>
+    ///deals n cards from the deck, be sure to cast as a concrete type immediately
+    /// </summary>
+    /// <param name="n"> n = number of cards to return </param>
+    /// <returns></returns>
+
+    public IEnumerable<Card> Deal(int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            yield return DealOne();
+        }
+        
     }
 
     #region Enumerable Stuff
