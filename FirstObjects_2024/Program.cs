@@ -1,13 +1,7 @@
 ﻿using FirstObjects_2024;
 
-
-Deck decks = new();
-foreach (var card in decks)
-{
-    Console.WriteLine(card);
-}
-
 Deck deck = new();
+deck.Shuffle();
 foreach (var card in deck)
 {
     Console.WriteLine(card);
