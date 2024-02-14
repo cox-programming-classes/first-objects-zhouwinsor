@@ -31,9 +31,9 @@ public class Deck :IEnumerable<Card>{
         }
     }
     
-    //shuffling a deck
-    ///method: split the deck in half, then take one deck and insert it randomly into the other; repeat 3 times
+
     
+    //Split is irrelevant but I feel bad deleting
     private (List<Card>, List<Card>) Split(List<Card> cards) {
         var pile1 = new List<Card>();
         var pile2 = new List<Card>();
@@ -54,10 +54,17 @@ public class Deck :IEnumerable<Card>{
 
         return (pile1, pile2);
     }
-    //i didn't finish this...
+    //shuffling a deck
+    ///method: copy _cards to a new deck, make it empty, then start adding the cards randomly using the other method.
     public void Shuffle()
     {
-        for (int i =0; i<3; i++)
+        //do I need to make _cards null to re-add all of the cards randomly?
+        IEnumerable<Card> deck2 = _cards;
+        
+        InsertCardsRandomly(deck2);
+        
+        //carcass of old method
+       /* for (int i =0; i<3; i++)
         {
             (var pile1, var pile2) = Split(_cards);
             InsertCardsRandomly(pile1);
@@ -66,6 +73,7 @@ public class Deck :IEnumerable<Card>{
             // _cards = pile1 pile2;
             
         }
+        */
     }
     
     public Deck()
