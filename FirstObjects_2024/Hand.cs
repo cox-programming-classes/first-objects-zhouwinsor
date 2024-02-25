@@ -40,4 +40,10 @@ public class Hand
     public bool Has(Value v) => _hand.Any(card => card.Value== v);
     
     public bool Has(Card c) => _hand.Any(card => card == c);
+
+    public override string ToString() =>
+        _hand
+            .Select(card => $"{card}")
+            .Aggregate((a, b) => $"{a}, {b}");
+
 }
