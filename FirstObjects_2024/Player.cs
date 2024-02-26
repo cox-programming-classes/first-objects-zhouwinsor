@@ -15,10 +15,19 @@ public class Player
         get
         {
             var total = 0;
-            //there's smtg about Enumerables?
             foreach (var card in _hand)
             {
-                total += card.Value;
+                if (card.Value == 11 || card.Value == 12 || card.Value == 13) {
+                    total += 10;
+                }
+                else if (card.Value == 14) {
+                    total += 11;
+                    if (total > 21) {
+                        total -= 10;
+                    }
+                }
+                else
+                    total += card.Value;
             }
             //why are there errors if I put this outside of the "get" curly brackets?
             //for calculating AceHigh, if there is an ace, you can have the console ask the player what they want to do

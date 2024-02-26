@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace FirstObjects_2024;
 
-public class Hand
+public class Hand: IEnumerable<Card>
 {
     private List<Card> _hand;
 
@@ -45,5 +47,13 @@ public class Hand
         _hand
             .Select(card => $"{card}")
             .Aggregate((a, b) => $"{a}, {b}");
+    public IEnumerator<Card> GetEnumerator()
+    {
+        return _hand.GetEnumerator();
+    }
 
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable)_hand).GetEnumerator();
+    }
 }
