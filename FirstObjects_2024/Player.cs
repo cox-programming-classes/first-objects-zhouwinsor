@@ -15,7 +15,8 @@ public class Player
         get
         {
             var total = 0;
-            foreach (var card in _hand)
+            var sorted = _hand.OrderBy(card => (int)card.Value);
+            foreach (var card in sorted)
             {
                 if (card.Value == 11 || card.Value == 12 || card.Value == 13) {
                     total += 10;
